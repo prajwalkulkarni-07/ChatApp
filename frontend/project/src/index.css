@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	background-image: 
+		linear-gradient(120deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+		url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to right bottom, #1a1f2c, #2c3e50);
+	min-height: 100vh;
+	@apply text-gray-100;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(26, 26, 26, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(74, 85, 104, 0.7);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(113, 128, 150, 0.8);
+}
+
+.glass-effect {
+	@apply bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 
+		border border-gray-700 shadow-lg;
+}
+
+.message-container {
+	background-image: 
+		linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+		url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M0 0h35v35H0zM35 35h35v35H35z'/%3E%3C/g%3E%3C/svg%3E");
+	@apply flex-1 overflow-auto px-4 py-2;
+}
+
+.chat-bubble {
+	@apply relative px-4 py-2 rounded-lg max-w-[80%] break-words shadow-md;
+	backdrop-filter: blur(8px);
+}
+
+.chat-bubble.sent {
+	@apply bg-blue-600 bg-opacity-90 text-white ml-auto;
+}
+
+.chat-bubble.received {
+	@apply bg-gray-700 bg-opacity-90 text-white;
+}
+
+.login-container {
+	@apply bg-gray-800 bg-opacity-50 backdrop-blur-md 
+		border border-gray-700 shadow-2xl 
+		rounded-xl p-8 transition-all duration-300
+		hover:shadow-blue-500/20;
+}
+
+.input-style {
+	@apply bg-gray-700 bg-opacity-50 border-gray-600 
+		focus:border-blue-500 focus:ring-2 focus:ring-blue-500 
+		text-gray-100 placeholder-gray-400;
+}
+
+.btn-primary {
+	@apply bg-blue-600 hover:bg-blue-700 text-white 
+		transition-all duration-300 ease-in-out
+		transform hover:scale-105;
+}
+
+.shake {
+	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+@keyframes shake {
+	10%, 90% { transform: translate3d(-1px, 0, 0); }
+	20%, 80% { transform: translate3d(2px, 0, 0); }
+	30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+	40%, 60% { transform: translate3d(4px, 0, 0); }
+}
