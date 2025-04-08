@@ -54,6 +54,15 @@ const MessageInput = () => {
 		return Math.min(Math.max(1, lineCount), 5); // Min 1 row, max 5 rows
 	};
 
+	// CSS for hiding scrollbars
+	const hideScrollbarStyles: React.CSSProperties = {
+		overflowY: calculateRows() >= 5 ? 'auto' : 'hidden',
+		scrollbarWidth: 'none', // Firefox
+		msOverflowStyle: 'none', // IE/Edge
+		// For Webkit browsers (Chrome, Safari, etc.)
+		WebkitOverflowScrolling: 'touch'
+	};
+
 	return (
 		<form className='px-6 py-4 bg-gray-800 bg-opacity-50' onSubmit={handleSubmit}>
 			<div className='flex items-end gap-2'>
@@ -65,18 +74,16 @@ const MessageInput = () => {
 						onChange={handleChange}
 						onKeyDown={handleKeyDown}
 						rows={calculateRows()}
-						style={{ 
-							overflowY: calculateRows() >= 5 ? 'auto' : 'hidden',
-							scrollbarWidth: 'none', // Firefox
-							msOverflowStyle: 'none' // IE/Edge
-						}}
+						style={hideScrollbarStyles}
 					/>
-					{/* Hide scrollbar for Chrome/Safari/Opera */}
-					<style jsx>{`
-						textarea::-webkit-scrollbar {
-							display: none;
-						}
-					`}</style>
+					{/* Add global style to head */}
+					<style>
+						{`
+							textarea::-webkit-scrollbar {
+								display: none;
+							}
+						`}
+					</style>
 				</div>
 				<button
 					type='submit'
